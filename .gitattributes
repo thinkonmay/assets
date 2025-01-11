@@ -1,0 +1,2 @@
+daemon.exe filter=lfs diff=lfs merge=lfs -text
+store/steam-login.exe filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,9 @@
+secret/proxy.json
+*.txt
+hid/package/hid/package/
+thinkmay.log
+cluster.yaml
+workerinfo.json
+model.yaml
+.mount/
+temp/
