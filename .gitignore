@@ -7,3 +7,10 @@ workerinfo.json
 model.yaml
 .mount/
 temp/
+metadata.bin
+daemon.exe
+proxy.exe
+proxy.log
+shmsunshine.exe
+pb_data/
+turn.json
