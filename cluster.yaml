@@ -1,0 +1,12 @@
+interface:
+  public: null
+  proxy: null
+ram: null
+vcpu: null
+storj: null
+cputune: null
+queue: []
+pools: []
+grantor: []
+nodes: []
+peers: []
