@@ -1,6 +1,7 @@
 interface:
   public: null
-  proxy: null
+  turn: null
+  api: null
 ram: null
 vcpu: null
 storj: null
