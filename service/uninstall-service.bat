@@ -1,6 +1,6 @@
 @echo off
 
-set SERVICE_NAME=thinkmay
+set SERVICE_NAME=think-remote
 
 net stop %SERVICE_NAME%
 

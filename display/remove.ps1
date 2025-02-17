@@ -1,1 +1,1 @@
-.\devcon.exe remove *Parsec* 
+.\devcon.exe remove *MttVDD* 
