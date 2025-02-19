@@ -12,3 +12,6 @@ proxy.exe
 proxy.log
 shmsunshine.exe
 pb_data/
+pb.exe
+sessionIDs.json
+turn.json
