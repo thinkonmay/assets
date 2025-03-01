@@ -1,0 +1,16 @@
+interface:
+  public: eno1np0
+  turn: eno2np1
+  api: tmvirbr0
+ram: 16
+vcpu: 8
+storj: null
+cputune: true
+pools:
+- path: /dev/md0
+  name: user_data
+- path: /dev/nvme2n1p2
+  name: app_data
+grantor: []
+nodes: []
+peers: []
