@@ -3,6 +3,7 @@ sh get-docker.sh
 apt-get update -y 
 apt install -y \
     net-tools \
+    isc-dhcp-server \
     neofetch \
     vim \
     curl \
