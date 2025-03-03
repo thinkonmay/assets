@@ -1,6 +1,9 @@
 set -x
-export PUBLICIP="$(curl -s ipv4.icanhazip.com)"
-read -p "Enter private network IP: " privateIP
+apt install -y moreutils yq
+export turnIF=$(yq '.interface.turn' cluster.yaml | tr -d '"' )
+export apiIF=$(yq '.interface.api' cluster.yaml  | tr -d '"' )
+export PUBLICIP="$(curl -s --interface $turnIF ipv4.icanhazip.com)"
+export PRIVIP="$(ifdata -pa $apiIF)"
 
 
 echo "[Unit]
@@ -34,7 +37,7 @@ Environment="SERVICE_DOMAIN=play.2.thinkmay.net"
 Environment="REDIRECT_URL=https://win11.thinkmay.net"
 Type=simple
 User=root
-ExecStart="$PWD"/pb --secure --url http://"$privateIP":50000 --proxy http://127.0.0.1:50001
+ExecStart="$PWD"/pb --secure --url http://"$PRIVIP":50000 --proxy http://127.0.0.1:50001
 WorkingDirectory="$PWD"
 
 Restart=always
