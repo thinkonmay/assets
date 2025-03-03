@@ -38,3 +38,7 @@ driverctl set-override 0000:b2:00.1 vfio-pci
 driverctl set-override 0000:da:00.0 vfio-pci
 driverctl set-override 0000:da:00.1 vfio-pci
 ufw disable
+
+
+
+rclone mount --config rclone.conf thinkmay:qcow2 ./qcow2
