@@ -1,5 +1,4 @@
 set -x
-apt install -y moreutils yq
 export turnIF=$(yq '.interface.turn' cluster.yaml | tr -d '"' )
 export apiIF=$(yq '.interface.api' cluster.yaml  | tr -d '"' )
 export PUBLICIP="$(curl -s --interface $turnIF ipv4.icanhazip.com)"

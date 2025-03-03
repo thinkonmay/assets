@@ -7,6 +7,7 @@ apt install -y \
     neofetch \
     vim \
     curl \
+    moreutils yq \
     openvswitch-switch \
     virt-manager \
     driverctl \
