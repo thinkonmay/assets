@@ -1,6 +1,7 @@
 set -x
 export turnIF=$(yq '.interface.turn' cluster.yaml | tr -d '"' )
 export apiIF=$(yq '.interface.api' cluster.yaml  | tr -d '"' )
+export publicIF=$(yq '.interface.public' cluster.yaml  | tr -d '"' )
 export PRIVIP="$(ifdata -pa $apiIF)"
 
 
@@ -12,7 +13,7 @@ subnet 10.30.30.0 netmask 255.255.255.0 {
  range 10.30.30.0 10.30.30.255;
  option routers 10.30.30.0;
  option domain-name-servers 8.8.8.8;
-}
+
 
 # host your_machine_name {
 #   hardware ethernet the:MAC:Address;
@@ -35,3 +36,4 @@ systemctl restart isc-dhcp-server.service
 iptables -t nat -A POSTROUTING -o $turnIF -j MASQUERADE
 iptables -A FORWARD -i $turnIF -o $apiIF -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i $apiIF -o $turnIF -j ACCEPT
+ip addr flush dev $publicIF
