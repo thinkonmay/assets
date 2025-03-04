@@ -29,6 +29,7 @@ INTERFACESv4=""$apiIF""
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 ip addr add 10.30.30.0 dev $apiIF
+ip link set dev $apiIF mtu 9000
 systemctl restart isc-dhcp-server.service
 
 # setup NAT

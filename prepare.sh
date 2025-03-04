@@ -4,6 +4,7 @@ apt-get update -y
 apt install -y \
     net-tools \
     isc-dhcp-server \
+    isc-dhcp-client \
     neofetch \
     vim \
     curl \
