@@ -3,8 +3,6 @@ sh get-docker.sh
 apt-get update -y 
 apt install -y \
     net-tools \
-    isc-dhcp-server \
-    isc-dhcp-client \
     neofetch \
     vim \
     curl \
@@ -12,7 +10,6 @@ apt install -y \
     openvswitch-switch \
     virt-manager \
     driverctl \
-    pppoeconf \
     libevdev-dev
 
 docker network create internal  \
@@ -43,5 +40,14 @@ driverctl set-override 0000:da:00.1 vfio-pci
 ufw disable
 
 
+mkdir -P /volumes
 
-rclone mount --config rclone.conf thinkmay:qcow2 ./qcow2
+curl -X GET https://play.2.thinkmay.net/admin/app.qcow2 
+    -H 'pool:app_data' 
+    -H 'Authorization:Basic qwertyuiopasdfghjkl' 
+    --output /volumes/app.template.qcow2
+
+curl -X GET https://play.2.thinkmay.net/admin/win11.template.qcow2 
+    -H 'pool:app_data' 
+    -H 'Authorization:Basic qwertyuiopasdfghjkl' 
+    --output /volumes/win11.template.qcow2
