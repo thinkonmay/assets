@@ -6,6 +6,7 @@ ram: null
 vcpu: null
 storj: null
 cputune: null
+resize: true
 queue: []
 pools: []
 grantor: []
