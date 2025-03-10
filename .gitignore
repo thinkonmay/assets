@@ -15,3 +15,5 @@ pb_data/
 pb.exe
 sessionIDs.json
 turn.json
+store/steam-login.exe
+store/steam-login.pdb
