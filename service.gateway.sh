@@ -1,6 +1,10 @@
 set -x
-export turnIF=$(yq '.interface.turn' cluster.yaml | tr -d '"' )
-export apiIF=$(yq '.interface.api' cluster.yaml  | tr -d '"' )
+export turnMAC=$(yq '.interface.turn.mac' cluster.yaml | tr -d '"' )
+export turnIF=$(ip link show | grep $turnMAC | head -n1 |  cut -d: -f2 | awk '{print $1}')
+
+export apiMAC=$(yq '.interface.api.mac' cluster.yaml | tr -d '"' )
+export apiIF=$(ip link show | grep $apiMAC | head -n1 |  cut -d: -f2 | awk '{print $1}')
+
 export PUBLICIP="$(curl -s --interface $turnIF ipv4.icanhazip.com)"
 export PRIVIP="$(ifdata -pa $apiIF)"
 
