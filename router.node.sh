@@ -1,12 +1,18 @@
 set -x
-export apiIF=$(yq '.interface.api' cluster.yaml  | tr -d '"' )
-export publicIF=$(yq '.interface.public' cluster.yaml  | tr -d '"' )
+export apiMAC=$(yq '.interface.api.mac' cluster.yaml | tr -d '"' )
+export apiIF=$(ip link show | grep $apiMAC -B 1 | head -n1 | cut -d: -f2 | awk '{print $1}')
+
+export publicMAC=$(yq '.interface.public.mac' cluster.yaml | tr -d '"')
+export publicIF=$(ip link show |  grep  $publicMAC -B 1 | head -n1 | cut -d: -f2 | awk '{print $1}')
+
 export PRIVIP="$(ifdata -pa $apiIF)"
+
+ifconfig $apiIF up
+ifconfig $publicIF up
 
 
 ip addr flush dev $apiIF
-ip addr add 10.30.30.1/24 dev $apiIF
+ip addr add 10.30.30.2/24 dev $apiIF
 ip link set dev $apiIF mtu 9000
 
-ip route add default 10.30.30.0 via 10.30.30.1
-ip addr flush dev $publicIF
+route add default gw 10.30.30.0 $apiIF
