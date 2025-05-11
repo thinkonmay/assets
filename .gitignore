@@ -10,7 +10,6 @@ metadata.bin
 daemon.exe
 proxy.exe
 proxy.log
-shmsunshine.exe
 pb_data/
 pb.exe
 sessionIDs.json
